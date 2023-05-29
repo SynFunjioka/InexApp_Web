@@ -1,0 +1,26 @@
+@import "../abstracts/mixins";
+
+.wrap{
+	width: 100%;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.24);
+	-moz-box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.24);
+	box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.24);
+}
+.text-wrap{
+	width: 50%;
+	// @include media-breakpoint-down(md){
+	// 	width: 100%;
+	// }
+}
+
+.text-wrap{
+	@include gradient-background();
+	color: $white;
+	.text{
+		h2{
+			font-weight: 900;
+			color: $white;
+		}
+	}
+}

@@ -1,0 +1,21 @@
+{
+  "name": "ecommerce-ingenieriaweb",
+  "version": "1.0.0",
+  "description": "Pagina eCommerce hecho en Node para la tarea de Ingenieria y Desarrollo en la Web",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "start:dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alan Flores",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

@@ -1,0 +1,23 @@
+.social-media{
+	position: relative;
+	width: 100%;
+	.social-icon{
+		display: block;
+		width: 40px;
+		height: 40px;
+		background: transparent;
+		border: 1px solid rgba(0,0,0,.05);
+		font-size: 16px;
+		margin-right: 5px;
+		border-radius: 50%;
+		span{
+			color: lighten($black,60%);
+		}
+		&:hover, &:focus{
+			background: $primary;
+			span{
+				color: $white;
+			}
+		}
+	}
+}

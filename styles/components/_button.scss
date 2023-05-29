@@ -1,0 +1,54 @@
+@import "../abstracts/mixins";
+@import "../abstracts/colors";
+
+.btn {
+	cursor: pointer;
+	box-shadow: none!important;
+	font-size: 15px;
+	padding: 10px 20px;
+	border-radius: 50px;
+	&:hover, &:active, &:focus {
+		outline: none;
+	}
+	&.btn-primary {
+		background: $primary;
+		border: 1px solid $primary;
+		color: $white;
+		@include gradient-background();
+		&:hover {
+			border: 1px solid $primary;
+			background: $primary;
+			color :$white;
+		}
+		&.btn-outline-primary {
+			border: 1px solid $primary;
+			background: transparent;
+			color :$primary;
+			&:hover {
+				border: 1px solid transparent;
+				background: $primary;
+				color :$white;
+			}
+		}
+	}
+	&.btn-white {
+		background: $white;
+		border: 1px solid $white;
+		color: $white;
+		&:hover {
+			border: 1px solid $white;
+			background: transparent;
+			color :$white;
+		}
+		&.btn-outline-white {
+			border: 1px solid $white;
+			background: transparent;
+			color :$white;
+			&:hover {
+				border: 1px solid transparent;
+				background: $white;
+				color :$black;
+			}
+		}
+	}
+}
