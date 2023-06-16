@@ -10,6 +10,7 @@
 	&:hover, &:active, &:focus {
 		outline: none;
 	}
+
 	&.btn-primary {
 		background: $primary;
 		border: 1px solid $primary;
@@ -31,6 +32,7 @@
 			}
 		}
 	}
+	
 	&.btn-white {
 		background: $white;
 		border: 1px solid $white;

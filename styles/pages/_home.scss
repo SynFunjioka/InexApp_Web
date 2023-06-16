@@ -1,0 +1,45 @@
+#home-page{
+    padding: 1rem;
+    #grafica-gastos{
+        h2 {
+            text-align: center;
+        }
+        .controls{
+            display: flex;
+            justify-content: center;
+            gap: 0 1rem;
+
+            &__chart{
+                position: relative;
+
+                button{
+                    position: absolute;
+                    left: 100%;
+
+                    transform: translate(-100%, -100%);
+
+                }
+            }
+
+            &__button{
+                align-self: center;
+            }
+        }
+    }
+
+    #lista-gastos{
+        ul{
+            padding: 0 30%;
+        }
+
+        li{
+            padding: 0.5rem 0.8rem;
+            border-radius: 10px;
+            background-color: $grey;
+
+            &:not(:last-child){
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}

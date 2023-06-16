@@ -1,5 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
 <%- include('../partials/head') %>
-<%- include('../components/side-navbar') %>
+<body class="body-grid">
+    <%- include('../components/side-navbar') %>
+    <main id="home-page">
+        <h1 class="mb-4">Home</h1>
+        <section id="grafica-gastos" class="mb-4">
+            <h2>23/02/2023</h2>
+            <div class="controls">
+                <div class="controls__button">
+                    <button class="btn btn-primary">&lt;</button>
+                </div>
+                <div class="controls__chart">
+                    <canvas id="myChart"></canvas>
+                    <button class="btn btn--circle btn-primary"> + </button>
+                </div>
+                <div class="controls__button">
+                    <button class="btn btn-primary">&gt;</button>
+                </div>
+            </div>
+        </section>
+        <section id="lista-gastos">
+            <h2>Movimientos</h2>
+            <ul>
+                <li class="row">
+                    <div class="col-8">Antojo trabajo</div>
+                    <div class="col-4">$123</div>
+                </li>
+                <li class="row">
+                    <div class="col-8">GYM</div>
+                    <div class="col-4">$600</div>
+                </li>
+                <li class="row">
+                    <div class="col-8">Nómina</div>
+                    <div class="col-4">$3679</div>
+                </li>
+            </ul>
+        </section>
+        <%- include('../partials/foot') %>
+    </main>
 
+    <script src="/js/utils/charts.js"></script>
+    <script src="/js/pages/home.js"></script>
+</body>
+</html>
 
-<%- include('../partials/foot') %>

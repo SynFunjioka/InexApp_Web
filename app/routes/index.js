@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.render('index'); // Renderizar una vista usando el motor de plantillas
+  res.render('./pages/home');
 });
 
 router.get('/login', (req, res) => {
@@ -13,8 +13,5 @@ router.get('/signup', (req, res) => {
   res.render('./pages/register');
 });
 
-router.get('/home', (req, res) => {
-  res.render('./pages/home');
-});
 
 module.exports = router;
