@@ -1,7 +1,7 @@
 {
-  "name": "ecommerce-ingenieriaweb",
+  "name": "inex-app-ingenieriaweb",
   "version": "1.0.0",
-  "description": "Pagina eCommerce hecho en Node para la tarea de Ingenieria y Desarrollo en la Web",
+  "description": "Pagina de gestion de ingresos y egeresos hecho en Node para la tarea de Ingenieria y Desarrollo en la Web",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",

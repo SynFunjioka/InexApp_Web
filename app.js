@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 
 //* Imports
 const indexRoute = require('./app/routes/index');
-const authRoute = require('./app/routes/auth')
 
 const app = express();
 app.set('view engine', 'ejs');

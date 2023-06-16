@@ -307,6 +307,42 @@ h1, h2, h3, h4, h5, h6,
   border-color: transparent;
 }
 
+.sidenav {
+  background-color: #F15A59;
+  width: 14rem;
+  height: 100vh; /* 100% del viewport height */
+  position: fixed;
+  left: 0;
+  top: 0;
+  color: #FFF;
+}
+.sidenav figure {
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.sidenav figure img {
+  align-self: center;
+  border-radius: 50%;
+  width: 50%;
+}
+.sidenav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+}
+.sidenav ul li {
+  margin-bottom: 10px;
+}
+.sidenav ul li a {
+  color: white;
+  text-decoration: none;
+}
+.sidenav li {
+  padding: 0.3rem 1rem;
+}
+
 .login-section {
   padding: 7em 0;
 }

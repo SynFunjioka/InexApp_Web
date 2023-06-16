@@ -1,0 +1,42 @@
+@import "../abstracts/colors";
+
+.sidenav {
+    background-color: $primary;
+    width: 14rem;
+    height: 100vh; /* 100% del viewport height */
+    position: fixed;
+    left: 0;
+    top: 0;
+    color: $white;
+
+    figure{
+        padding: 0.5rem 0;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        img{
+            align-self: center;
+            border-radius: 50%;
+            width: 50%;
+        }
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+    
+    ul li {
+      margin-bottom: 10px;
+    }
+    
+    ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    li{
+        padding: 0.3rem 1rem;
+    }
+}
