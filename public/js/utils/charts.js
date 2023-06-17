@@ -2,17 +2,15 @@ let = doughnutChartConfig = {
     type: 'doughnut',
     data: {
         labels: [
-            'Red',
-            'Blue',
-            'Yellow'
+            'Ingresos',
+            'Gastos',
         ],
         datasets: [{
-            label: 'My First Dataset',
-            data: [300, 50, 100],
+            label: 'Registro de gastos',
+            data: null,
             backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
+                'rgb(19, 209, 73)',
+                'rgb(210, 19, 18)',
             ],
             hoverOffset: 4
         }]
@@ -25,7 +23,7 @@ let = doughnutChartConfig = {
             },
             title: {
                 display: true,
-                text: 'Chart.js Doughnut Chart'
+                text: 'Comparacion de gastos e ingresos'
             }
         }
     },

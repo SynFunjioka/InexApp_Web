@@ -23,23 +23,23 @@
         <section id="lista-gastos">
             <h2>Movimientos</h2>
             <ul>
-                <li class="row">
-                    <div class="col-8">Antojo trabajo</div>
-                    <div class="col-4">$123</div>
-                </li>
-                <li class="row">
-                    <div class="col-8">GYM</div>
-                    <div class="col-4">$600</div>
-                </li>
-                <li class="row">
-                    <div class="col-8">Nómina</div>
-                    <div class="col-4">$3679</div>
-                </li>
+                <% transactions.forEach(transaction => { %>
+                    <li class="row">
+                        <div class="col-8"><%= transaction.description  %></div>
+                        <div class="col-4">$<%= transaction.mount %></div>
+                    </li>
+                <% }) %>
             </ul>
         </section>
         <%- include('../partials/foot') %>
     </main>
 
+    <script>
+        var chartData = <%- JSON.stringify(doughnutChartConfig) %>;
+        var ctx = document.getElementById('myChart').getContext('2d');
+
+        var myChart = new Chart(ctx, chartData)
+    </script>
     <script src="/js/utils/charts.js"></script>
     <script src="/js/pages/home.js"></script>
 </body>
