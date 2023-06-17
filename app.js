@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 //* Imports
 const indexRoute = require('./app/routes/index');
+const apiRoute = require('./app/routes/api/api');
 
 const app = express();
 app.use(express.json());
@@ -15,6 +16,7 @@ app.use(express.static('public'));
 
 //* Middleware de rutas
 app.use('/', indexRoute);
+app.use('/api', apiRoute);
 
 app.listen(3000, () => {
     console.log('App listening on port 3000');

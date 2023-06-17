@@ -2,14 +2,15 @@ const axios = require('axios');
 
 const { INEX_API } = process.env;
 
+const { getAll } = require('../services/transaction.service');
+
 //*Model
 const {ResToTransaction} = require('../models/transaction.model');
-const { Chart } = require('chart.js');
 
 const GetTransactions = async () =>{
     try {
-        const { data } = await axios.get(`http://${INEX_API}/transactions`);
-        const { success, transactions: resTransactions, error} = data;
+        //📌 Importar funcion de mi servicio
+        const { success, transactions: resTransactions, error } = await getAll();
 
         if(success){
             const transactions = resTransactions.map(ResToTransaction);
@@ -33,7 +34,7 @@ const CreateTransaction = async (reqBody) => {
             user_id: "648cc73b797b198401cb2f8b",
             ...reqBody
         };
-        const { success } = await axios.post(`http://${INEX_API}/transactions`, myBody);
+        const { success } = await axios.post(`${INEX_API}/transactions`, myBody);
 
         return success;
     } catch (error) {
