@@ -23,10 +23,17 @@
         <section id="lista-gastos">
             <h2>Movimientos</h2>
             <ul>
-                <% transactions.forEach(transaction => { %>
+                <% transactions.forEach(({description, type, mount}) => { %>
+
                     <li class="row">
-                        <div class="col-8"><%= transaction.description  %></div>
-                        <div class="col-4">$<%= transaction.mount %></div>
+                        <div class="col-8"><%= description %></div>
+                        <div class="col-4">
+                            <% if (type === 'INCOME') { %>
+                                <span class="badge bg-success">+ $<%= mount %></span>
+                            <% } else if (type === 'EXPENSE') { %>
+                                <span class="badge bg-danger">- $<%= mount %></span>
+                            <% } %>
+                        </div>
                     </li>
                 <% }) %>
             </ul>
