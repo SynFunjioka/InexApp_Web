@@ -13,7 +13,7 @@
                 </div>
                 <div class="controls__chart">
                     <canvas id="myChart"></canvas>
-                    <button class="btn btn--circle btn-primary"> + </button>
+                    <button type="button" class="btn btn--circle btn-primary" data-bs-toggle="modal" data-bs-target="#createTransactionModal"> + </button>
                 </div>
                 <div class="controls__button">
                     <button class="btn btn-primary">&gt;</button>
@@ -23,21 +23,83 @@
         <section id="lista-gastos">
             <h2>Movimientos</h2>
             <ul>
-                <% transactions.forEach(({description, type, mount}) => { %>
+                <% transactions.forEach(({id, description, type, mount}) => { %>
 
-                    <li class="row">
-                        <div class="col-8"><%= description %></div>
-                        <div class="col-4">
-                            <% if (type === 'INCOME') { %>
-                                <span class="badge bg-success">+ $<%= mount %></span>
-                            <% } else if (type === 'EXPENSE') { %>
-                                <span class="badge bg-danger">- $<%= mount %></span>
-                            <% } %>
+                    <li class="transaction-item">
+                        <div class="row">
+                            <div class="col-8"><%= description %></div>
+                            <div class="col-4">
+                                <% if (type === 'INCOME') { %>
+                                    <span class="badge bg-success">+ $<%= mount %></span>
+                                <% } else if (type === 'EXPENSE') { %>
+                                    <span class="badge bg-danger">- $<%= mount %></span>
+                                <% } %>
+                            </div>
                         </div>
+                        <button class="btn btn-primary transaction-item__delete">-</button>
                     </li>
                 <% }) %>
             </ul>
         </section>
+
+
+        <!-- MODALS -->
+        <!-- Create transaction -->
+        <div class="modal fade" id="createTransactionModal" tabindex="-1" aria-labelledby="createTransactionModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createTransactionModalLabel">Nuevo movimiento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form action="/" method="post" id="createTransactionForm">
+                        <div class="form-group mb-3">
+                            <label class="label" for="name">Descripción</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="description"
+                                placeholder="Username"
+                                required
+                            />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="label" for="name">Cantidad</label>
+                            <div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type" id="type-income" value="INCOME">
+                                    <label class="form-check-label" for="type-income">
+                                        Ingreso
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type" id="type-expense" value="EXPENSE">
+                                    <label class="form-check-label" for="type-expense">
+                                        Gasto
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="label" for="name">Cantidad</label>
+                            <div class="input-group mb-3>
+                                <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" name="mount" aria-label="Amount of transaction">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" form="createTransactionForm">Save changes</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
         <%- include('../partials/foot') %>
     </main>
 

@@ -396,14 +396,23 @@ h1, h2, h3, h4, h5, h6,
   align-self: center;
 }
 #home-page #lista-gastos ul {
-  padding: 0 30%;
+  padding: 0 25%;
+  overflow-y: scroll;
 }
-#home-page #lista-gastos li {
+#home-page #lista-gastos .transaction-item {
+  display: flex;
+  gap: 0 1rem;
+}
+#home-page #lista-gastos .transaction-item .row {
+  flex: 1 1 auto;
   padding: 0.5rem 0.8rem;
   border-radius: 10px;
   background-color: #D3D3D3;
 }
-#home-page #lista-gastos li:not(:last-child) {
+#home-page #lista-gastos .transaction-item__delete {
+  display: inline-block;
+}
+#home-page #lista-gastos .transaction-item:not(:last-child) {
   margin-bottom: 1rem;
 }
 

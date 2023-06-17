@@ -7,11 +7,13 @@ const bodyParser = require('body-parser');
 const indexRoute = require('./app/routes/index');
 
 const app = express();
+app.use(express.json());
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
-// Rutas
+//* Middleware de rutas
 app.use('/', indexRoute);
 
 app.listen(3000, () => {

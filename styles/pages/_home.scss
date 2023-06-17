@@ -28,14 +28,26 @@
     }
 
     #lista-gastos{
+        
         ul{
-            padding: 0 30%;
+            padding: 0 25%;
+            overflow-y: scroll;
         }
+        
+        .transaction-item{
+            display: flex;
+            gap: 0 1rem;
 
-        li{
-            padding: 0.5rem 0.8rem;
-            border-radius: 10px;
-            background-color: $grey;
+            .row{
+                flex: 1 1 auto;
+                padding: 0.5rem 0.8rem;
+                border-radius: 10px;
+                background-color: $grey;
+            }
+
+            &__delete{
+                display: inline-block;
+            }
 
             &:not(:last-child){
                 margin-bottom: 1rem;

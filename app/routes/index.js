@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { GetTransactions } = require('../controllers/home.controller');
+const { GetTransactions, CreateTransaction } = require('../controllers/home.controller');
 
 router.get('/', async (req, res) => {
   try {
@@ -12,6 +12,21 @@ router.get('/', async (req, res) => {
   } catch (error) {
     console.log('Error loading transactions - controller', error);
     res.status(500).send('Error loading transactions');
+  }
+});
+
+router.post('/', async (req, res) => {
+  try {
+    const success = await CreateTransaction(req.body);
+
+    if(success){
+      res.redirect('/');
+    }
+    res.status(500);
+
+  } catch (error) {
+    console.log('Error creating transactions - controller', error);
+    res.status(500);
   }
 });
 

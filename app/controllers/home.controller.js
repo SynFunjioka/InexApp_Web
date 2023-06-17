@@ -25,6 +25,23 @@ const GetTransactions = async () =>{
     }
 }
 
+const CreateTransaction = async (reqBody) => {
+    try {
+        //📌 Make the user_id dinamically 
+
+        const myBody = {
+            user_id: "648cc73b797b198401cb2f8b",
+            ...reqBody
+        };
+        const { success } = await axios.post(`http://${INEX_API}/transactions`, myBody);
+
+        return success;
+    } catch (error) {
+        console.log('Error creating transactions', error);
+        throw error;
+    }
+}
+
 //* This clas is "PRIVATE"
 const GroupTransactionsByType = (transactions) => {
     return transactions.reduce((result, transaction) => {
@@ -72,5 +89,6 @@ const GenerateDoughnutChartConfig = (types) => {
 
 
 module.exports = {
-    GetTransactions
+    GetTransactions,
+    CreateTransaction
 }
