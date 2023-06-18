@@ -2,8 +2,9 @@ const { getAll, create, logicDelete } = require('../../services/transaction.serv
 
 const transactionController = {
     async getTransactions(req, res){
+
         try {
-            const transactions = await getAll();
+            const transactions = await getAll(req.query);
             console.log('transaction in controler', transactions);
             
             res.json(transactions);

@@ -7,17 +7,15 @@ const { getAll } = require('../services/transaction.service');
 //*Model
 const {ResToTransaction} = require('../models/transaction.model');
 
-const GetTransactions = async () =>{
+const GetTransactions = async (query) =>{
     try {
         //📌 Importar funcion de mi servicio
-        const { success, transactions: resTransactions, error } = await getAll();
+        const { success, transactions: resTransactions, error } = await getAll(query);
 
         if(success){
             const transactions = resTransactions.map(ResToTransaction);
-            const types = GroupTransactionsByType(transactions);
-            const doughnutChartConfig = GenerateDoughnutChartConfig(types);
 
-            return { transactions, doughnutChartConfig };
+            return { transactions };
         }
         throw error;
     } catch (error) {
@@ -42,52 +40,6 @@ const CreateTransaction = async (reqBody) => {
         throw error;
     }
 }
-
-//* This clas is "PRIVATE"
-const GroupTransactionsByType = (transactions) => {
-    return transactions.reduce((result, transaction) => {
-        const value = transaction.type;
-
-        if (!result[value]) {
-            result[value] = [transaction];
-        } else {
-            result[value].push(transaction);
-        }
-        return result;
-    }, {});
-};
-
-//* This clas is "PRIVATE"
-const GenerateDoughnutChartConfig = (types) => {
-    return {
-        type: 'doughnut',
-        data: {
-            labels: ['Ingresos', 'Gastos'],
-            datasets: [{
-                label: 'Registro de gastos',
-                data: [
-                    types.INCOME ? types.INCOME.reduce((total, transaction) => total + transaction.mount, 0): 0,
-                    types.EXPENSE ? types.EXPENSE.reduce((total, transaction) => total + transaction.mount, 0) : 0,
-                ],
-                backgroundColor: ['rgb(19, 209, 73)', 'rgb(210, 19, 18)'],
-                hoverOffset: 4,
-            },],
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'Comparacion de gastos e ingresos',
-                },
-            },
-        },
-    };
-};
-
 
 module.exports = {
     GetTransactions,

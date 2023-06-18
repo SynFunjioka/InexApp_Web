@@ -5,7 +5,7 @@ const { GetTransactions, CreateTransaction } = require('../controllers/home.cont
 
 router.get('/', async (req, res) => {
   try {
-    const { transactions, doughnutChartConfig } = await GetTransactions();
+    const { transactions, doughnutChartConfig } = await GetTransactions({deleted: 'false'});
     console.log('Getting transactions', transactions);
 
     res.render('./pages/home', { transactions, doughnutChartConfig });

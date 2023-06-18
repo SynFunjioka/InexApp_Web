@@ -1,0 +1,17 @@
+ <!-- 
+    This component needs the next props:
+    {id,description, type, mount}
+  -->
+ <li class="transaction-item">
+    <div class="row">
+        <div class="col-8"><%= description %></div>
+        <div class="col-4">
+            <% if (type === 'INCOME') { %>
+                <span class="badge bg-success">+ $<%= mount %></span>
+            <% } else if (type === 'EXPENSE') { %>
+                <span class="badge bg-danger">- $<%= mount %></span>
+            <% } %>
+        </div>
+    </div>
+    <button class="btn btn-primary transaction-item__delete" data-id="<%= id %>">-</button>
+</li>

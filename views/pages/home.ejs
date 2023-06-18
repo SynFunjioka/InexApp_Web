@@ -24,20 +24,7 @@
             <h2>Movimientos</h2>
             <ul>
                 <% transactions.forEach(({id, description, type, mount}) => { %>
-
-                    <li class="transaction-item">
-                        <div class="row">
-                            <div class="col-8"><%= description %></div>
-                            <div class="col-4">
-                                <% if (type === 'INCOME') { %>
-                                    <span class="badge bg-success">+ $<%= mount %></span>
-                                <% } else if (type === 'EXPENSE') { %>
-                                    <span class="badge bg-danger">- $<%= mount %></span>
-                                <% } %>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary transaction-item__delete">-</button>
-                    </li>
+                    <%- include('../components/transaction-item', {id, description, type, mount}) %>
                 <% }) %>
             </ul>
         </section>
@@ -102,15 +89,24 @@
 
         <%- include('../partials/foot') %>
     </main>
-
-    <script>
-        var chartData = <%- JSON.stringify(doughnutChartConfig) %>;
-        var ctx = document.getElementById('myChart').getContext('2d');
-
-        var myChart = new Chart(ctx, chartData)
-    </script>
+    
     <script src="/js/utils/charts.js"></script>
     <script src="/js/pages/home.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var transactions = <%- JSON.stringify(transactions) %>;
+            
+            var homeController = new HomeView(transactions); //? This class comes from home.js
+    
+            $(".transaction-item__delete").click(function() {
+                // Acciones a realizar cuando se hace clic en un botón
+                var buttonId = $(this).data("id");
+                homeController.DeleteTransaction(buttonId);
+            });
+        });
+
+    </script>
 </body>
 </html>
 
