@@ -12,7 +12,7 @@
           >
             <div class="text w-100">
               <h2>Welcome again!</h2>
-              <p>Don't have an account?</p>
+              <p>Don't you have an account?</p>
               <a href="#" class="btn btn-white btn-outline-white">Sign Up</a>
             </div>
           </div>
@@ -37,13 +37,14 @@
                 </p>
               </div> -->
             </div>
-            <form action="#" class="signin-form">
+            <form action="/login" method="post" class="signin-form">
               <div class="form-group mb-3">
-                <label class="label" for="name">Username</label>
+                <label class="label" for="email">Email</label>
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Username"
+                  placeholder="your@email.com"
+                  name="email"
                   required
                 />
               </div>
@@ -53,6 +54,7 @@
                   type="password"
                   class="form-control"
                   placeholder="Password"
+                  name="password"
                   required
                 />
               </div>

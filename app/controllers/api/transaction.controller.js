@@ -2,6 +2,9 @@ const { getAll, create, logicDelete } = require('../../services/transaction.serv
 
 const transactionController = {
     async getTransactions(req, res){
+        if (!req.user) {
+            return res.status(401).json({ messagge: 'No authorization' });
+        }
 
         try {
             const transactions = await getAll(req.query);
@@ -15,6 +18,9 @@ const transactionController = {
     },
 
     async createTransaction(req, res){
+        if (!req.user) {
+            return res.status(401).json({ messagge: 'No authorization' });
+        }
         try {
             const newTransaction = await create(req.body);
             res.json(newTransaction)
@@ -24,6 +30,9 @@ const transactionController = {
     },
 
     async deleteTransaction(req, res) {
+        if (!req.user) {
+            return res.status(401).json({messagge: 'No authorization'});
+        }
         try {
             console.log('req.id', req.params.id)
             const deletedTransaction = await logicDelete(req.params.id);

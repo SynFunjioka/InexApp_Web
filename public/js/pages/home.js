@@ -28,6 +28,7 @@ class HomeView{
             },
             error: function (xhr, status, error){
                 console.error('Error in html', error);
+                window.location.href = '/';
             }
         });
     }
