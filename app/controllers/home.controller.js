@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const { INEX_API } = process.env;
 
-const { getAll } = require('../services/transaction.service');
+const { getAll, create } = require('../services/transaction.service');
 
 //*Model
 const {ResToTransaction} = require('../models/transaction.model');
@@ -32,7 +32,8 @@ const CreateTransaction = async (reqBody) => {
             user_id: "648cc73b797b198401cb2f8b",
             ...reqBody
         };
-        const { success } = await axios.post(`${INEX_API}/transactions`, myBody);
+
+        const { success } = await create(myBody);
 
         return success;
     } catch (error) {

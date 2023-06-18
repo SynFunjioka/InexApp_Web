@@ -5,10 +5,10 @@ const { GetTransactions, CreateTransaction } = require('../controllers/home.cont
 
 router.get('/', async (req, res) => {
   try {
-    const { transactions, doughnutChartConfig } = await GetTransactions({deleted: 'false'});
+    const { transactions } = await GetTransactions({deleted: 'false'});
     console.log('Getting transactions', transactions);
 
-    res.render('./pages/home', { transactions, doughnutChartConfig });
+    res.render('./pages/home', { transactions });
   } catch (error) {
     console.log('Error loading transactions - controller', error);
     res.status(500).send('Error loading transactions');

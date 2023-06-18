@@ -6,7 +6,6 @@ const url = `${INEX_API}/transactions`;
 const apiService = {
     async getAll(query) {
         const { data } = await axios.get(`${url}`, { params: query });
-        console.log('Data on api', data);
         return data;
     },
 
