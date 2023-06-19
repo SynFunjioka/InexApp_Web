@@ -14,7 +14,7 @@ router.get('/', checkToken, async (req, res) => {
     const { transactions } = await GetTransactions({ deleted: 'false' });
     console.log('Getting transactions', transactions);
 
-    res.render('./pages/home', { transactions });
+    res.render('./pages/home', { transactions, user: req.user });
   } catch (error) {
     console.log('Error loading transactions - controller', error);
     res.status(500);
