@@ -9,25 +9,39 @@
             <h2><%= fecha %></h2>
             <div class="controls">
                 <div class="controls__button">
-                    <button class="btn btn-primary">&lt;</button>
+                    <!-- Button to change date of history -->
+                    <!-- <button class="btn btn-primary">&lt;</button> -->
                 </div>
-                <div class="controls__chart">
-                    <canvas id="myChart"></canvas>
-                    <button type="button" class="btn btn--circle btn-primary" data-bs-toggle="modal" data-bs-target="#createTransactionModal"> + </button>
-                </div>
+                <% if (transactions.length > 0) { %>
+                    <div class="controls__chart">
+                        <canvas id="myChart"></canvas>
+                        <button type="button" class="btn btn--circle btn-primary" data-bs-toggle="modal" data-bs-target="#createTransactionModal"> + </button>
+                    </div>
+                <% } else { %>
+                    <div class="d-flex flex-column">
+                        <p class="h2 mb-2" style="color: rgb(164, 164, 164);">Este día no has realizado ningún movimiento</p>
+                        <button type="button" class="btn btn--circle btn-primary w-50 align-self-center" data-bs-toggle="modal" data-bs-target="#createTransactionModal"> Crear registro </button>
+                    </div>
+
+                <% } %>
+                 
                 <div class="controls__button">
-                    <button class="btn btn-primary">&gt;</button>
+                    <!-- Button to change date of history -->
+                    <!-- <button class="btn btn-primary">&gt;</button> -->
                 </div>
             </div>
         </section>
-        <section id="lista-gastos">
-            <h2>Movimientos</h2>
-            <ul>
-                <% transactions.forEach(({id, description, type, mount}) => { %>
-                    <%- include('../components/transaction-item', {id, description, type, mount}) %>
-                <% }) %>
-            </ul>
-        </section>
+
+        <% if (transactions.length > 0) { %>  
+            <section id="lista-gastos">
+                <h2>Movimientos</h2>
+                <ul>
+                    <% transactions.forEach(({id, description, type, mount}) => { %>
+                        <%- include('../components/transaction-item', {id, description, type, mount}) %>
+                    <% }) %>
+                </ul>
+            </section>
+        <% } %>
 
 
         <!-- MODALS -->
