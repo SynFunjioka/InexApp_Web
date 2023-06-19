@@ -34,8 +34,8 @@
 
         <% if (transactions.length > 0) { %>  
             <section id="lista-gastos">
-                <h2>Movimientos</h2>
-                <ul>
+                <h2 class="ps-3">Movimientos</h2>
+                <ul class="overflow-auto">
                     <% transactions.forEach(({id, description, type, mount}) => { %>
                         <%- include('../components/transaction-item', {id, description, type, mount}) %>
                     <% }) %>
