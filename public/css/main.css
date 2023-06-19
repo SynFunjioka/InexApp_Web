@@ -218,15 +218,21 @@ h1, h2, h3, h4, h5, h6,
 .body-grid {
   display: grid;
   grid-template-columns: 1fr 5fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 100%;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
 .body-grid .sidenav {
   grid-area: 1/1/2/2;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 190px;
 }
 .body-grid main {
   grid-area: 1/2/2/3;
+  overflow-y: scroll;
 }
 
 .wrap {
@@ -329,8 +335,6 @@ h1, h2, h3, h4, h5, h6,
 .sidenav {
   background-color: #F15A59;
   height: 100vh; /* 100% del viewport height */
-  left: 0;
-  top: 0;
   color: #FFF;
 }
 .sidenav figure {
