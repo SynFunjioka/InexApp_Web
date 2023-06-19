@@ -9,7 +9,6 @@ const {ResToTransaction} = require('../models/transaction.model');
 
 const GetTransactions = async (query) =>{
     try {
-        //📌 Importar funcion de mi servicio
         const { success, transactions: resTransactions, error } = await getAll(query);
 
         if(success){
@@ -28,12 +27,12 @@ const CreateTransaction = async (reqBody) => {
     try {
         //📌 Make the user_id dinamically 
 
-        const myBody = {
-            user_id: "648cc73b797b198401cb2f8b",
-            ...reqBody
-        };
+        // const myBody = {
+        //     user_id: "648cc73b797b198401cb2f8b",
+        //     ...reqBody
+        // };
 
-        const { success } = await create(myBody);
+        const { success } = await create(reqBody);
 
         return success;
     } catch (error) {

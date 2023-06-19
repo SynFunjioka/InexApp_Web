@@ -10,11 +10,13 @@ router.get('/', checkToken, async (req, res) => {
     if (!req.user) {
       res.redirect('/login');
     }
-    // console.log('valido token', req.cookies);
-    const { transactions } = await GetTransactions({ deleted: 'false' });
+    //? This variable is used to get the transaction from current date. 
+    const fecha = new Date().toISOString().split('T')[0];
+    console.log('Fecha actual', fecha);
+    const { transactions } = await GetTransactions({ deleted: 'false', user: req.user.id, fecha });
     console.log('Getting transactions', transactions);
 
-    res.render('./pages/home', { transactions, user: req.user });
+    res.render('./pages/home', { transactions, user: req.user, fecha: fecha.split('-').reverse().join('/') });
   } catch (error) {
     console.log('Error loading transactions - controller', error);
     res.status(500);
@@ -26,7 +28,11 @@ router.post('/', checkToken, async (req, res) => {
     if (!req.user) {
       res.redirect('/login');
     }
-    const success = await CreateTransaction(req.body);
+    const body = {
+      ...req.body,
+      user_id: req.user.id
+    }
+    const success = await CreateTransaction(body);
 
     if(success){
       res.redirect('/');
@@ -87,6 +93,17 @@ router.post('/signup', async (req, res) => {
   } catch (error) {
     console.log('Error on creating account', error);
     res.redirect('/signup');
+  }
+});
+
+//📌 Revisar si ocultar o cambiar 
+router.get('/signout', async (req, res) => {
+  try {
+    res.clearCookie('userToken');
+    res.redirect('/login');
+  } catch (error) {
+    console.error('Error on log out', error);
+    res.status(500).json({message: "Something went wrong on log out", error})
   }
 });
 
