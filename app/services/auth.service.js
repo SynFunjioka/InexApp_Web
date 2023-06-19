@@ -8,6 +8,11 @@ const apiService = {
         const { data } = await axios.post(`${url}/login`, credentials);
         return data;
     },
+
+    async signUp(credentials) {
+        const { data } = await axios.post(`${url}/signup`, credentials);
+        return data;
+    },
 };
 
 module.exports = apiService;

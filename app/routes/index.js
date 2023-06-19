@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {checkToken, createCookieOfToken} = require('../../middleware/passport.middleware')
 const { GetTransactions, CreateTransaction } = require('../controllers/home.controller');
-const { login } = require('../services/auth.service');
+const { login, signUp } = require('../services/auth.service');
 
 router.get('/', checkToken, async (req, res) => {
   try {
@@ -65,9 +65,29 @@ router.get('/login', checkToken, (req, res) => {
   res.render('./pages/login');
 });
 
-router.get('/signup', (req, res) => {
+router.get('/signup', checkToken, (req, res) => {
+  if (req.user) {
+    res.redirect('/');
+  }
+
   res.render('./pages/register');
 });
 
+router.post('/signup', async (req, res) => {
+  try {
+    const { success, newUser, token, message, error } = await signUp(req.body);
+
+    if (success) {
+      const [tokenName, tokenOptions] = createCookieOfToken(token);
+      res.cookie(tokenName, token, tokenOptions);
+      res.redirect('/');
+    } else {
+      res.status(400).json({ message, error });
+    }
+  } catch (error) {
+    console.log('Error on creating account', error);
+    res.redirect('/signup');
+  }
+});
 
 module.exports = router;
