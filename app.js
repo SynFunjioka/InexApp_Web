@@ -3,7 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 // const request = require('request');
-// const { SECRET_TOKEN } = process.env;
+const { APP_PORT } = process.env;
 
 const cookieParser = require('cookie-parser');
 
@@ -30,6 +30,6 @@ app.use(cookieParser());
 app.use('/', indexRoute);
 app.use('/api', checkToken, apiRoute);
 
-app.listen(3000, () => {
-    console.log('App listening on port 3000');
+app.listen(APP_PORT, () => {
+    console.log(`App listening on port ${APP_PORT}`);
 });
