@@ -14,6 +14,6 @@ class Transaction {
  * @param res The response value given from the InexAPI
  */
 module.exports.ResToTransaction = (res) => {
-    const { _id, description, type, mount, date } = res;
-    return new Transaction(_id, description, type, mount, date);
+    const { _id, description, type, mount, createdAt } = res;
+    return new Transaction(_id, description, type, mount, createdAt);
 }
